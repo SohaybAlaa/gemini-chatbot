@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Gemini Chatbot</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            background-color: #f4f4f4;
+            padding: 40px;
+            max-width: 800px;
+            margin: auto;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 1rem;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin-top: 10px;
+            font-size: 1rem;
+            background-color: #3b82f6;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .message {
+            background: white;
+            padding: 15px;
+            margin-top: 15px;
+            border-radius: 10px;
+            white-space: pre-wrap;
+        }
+
+        .question {
+            font-weight: bold;
+            color: #1e3a8a;
+        }
+
+        .answer {
+            margin-top: 5px;
+            color: #111827;
+        }
+
+        .clear-btn {
+            background: red;
+            float: right;
+            margin-top: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>🤖 Gemini Chatbot</h1>
+
+    <form action="/ask" method="POST">
+        <input type="text" name="question" placeholder="Ask something..." required>
+        <button type="submit">Send</button>
+        <a href="/reset"><button type="button" class="clear-btn">🗑️ Clear</button></a>
+    </form>
+
+    {% for chat in chat_history %}
+    <div class="message">
+        <div class="question">Q: {{ chat.question }}</div>
+        <div class="answer">A: {{ chat.answer }}</div>
+    </div>
+    {% endfor %}
+</body>
+
+</html>
